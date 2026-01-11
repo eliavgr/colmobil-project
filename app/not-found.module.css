@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  min-height: 60vh;
+}
+
+.code {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.message {
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  max-width: 28rem;
+}
+
+.buttons {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.button {
+  padding: var(--spacing-button-y) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+  font-weight: var(--font-weight-medium);
+}
+
+.buttonPrimary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.buttonPrimary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.buttonSecondary {
+  background-color: var(--color-background-gray);
+  color: var(--color-border-dark);
+}
+
+.buttonSecondary:hover {
+  background-color: var(--color-border-light);
+}
