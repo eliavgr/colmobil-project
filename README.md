@@ -14,7 +14,7 @@ A product catalog project built with Next.js 14, TypeScript, and CSS Modules. Th
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/eliavgr/colmobil-project.git
 cd colmobil-project
 ```
 
