@@ -6,9 +6,12 @@
   padding: var(--spacing-2xl) var(--spacing-md);
 }
 
-.icon {
-  font-size: var(--font-size-5xl);
+.iconContainer {
   margin-bottom: var(--spacing-md);
+}
+
+.icon {
+  display: block;
 }
 
 .title {

@@ -11,10 +11,3 @@ export interface Product {
   };
 }
 
-export interface ProductFilters {
-  searchQuery?: string;
-  category?: string;
-  minPrice?: number;
-  maxPrice?: number;
-}
-

@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { Product } from '@/lib/types';
-import ProductCard from '@/components/product/ProductCard';
-import SearchFilterBar from '@/components/product/SearchFilterBar';
-import CategoryLoader from '@/components/ui/CategoryLoader';
-import ErrorState from '@/components/ui/ErrorState';
-import { getProductsByCategory, FakeStoreAPIError } from '@/lib/fakestore';
-import styles from './page.module.css';
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { Product } from "@/lib/types";
+import ProductCard from "@/components/product/ProductCard";
+import SearchFilterBar from "@/components/product/SearchFilterBar";
+import CategoryLoader from "@/components/ui/CategoryLoader";
+import ErrorState from "@/components/ui/ErrorState";
+import { getProductsByCategory, FakeStoreAPIError } from "@/lib/fakestore";
+import styles from "./page.module.css";
 
 interface ProductsClientProps {
   initialProducts: Product[];
@@ -27,8 +27,8 @@ export default function ProductsClient({
   categories,
 }: ProductsClientProps) {
   const [products, setProducts] = useState<Product[]>(initialProducts);
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [isLoadingCategory, setIsLoadingCategory] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -50,18 +50,22 @@ export default function ProductsClient({
         setProducts(categoryProducts);
       } catch (err) {
         // Provide user-friendly error messages
-        let errorMessage = 'Unable to load products for this category. Please try again.';
-        
+        let errorMessage =
+          "Unable to load products for this category. Please try again.";
+
         if (err instanceof FakeStoreAPIError) {
           if (err.statusCode === 404) {
             errorMessage = `Category "${selectedCategory}" not found. Please select a different category.`;
           } else if (err.statusCode) {
-            errorMessage = 'Unable to load products at this time. Please try again later.';
+            errorMessage =
+              "Unable to load products at this time. Please try again later.";
           } else {
-            errorMessage = 'Network error. Please check your connection and try again.';
+            errorMessage =
+              "Network error. Please check your connection and try again.";
           }
         } else if (err instanceof Error) {
-          errorMessage = 'An error occurred while loading products. Please try again.';
+          errorMessage =
+            "An error occurred while loading products. Please try again.";
         }
 
         setError(errorMessage);
@@ -101,7 +105,7 @@ export default function ProductsClient({
       setError(null);
       // Trigger refetch by updating the state
       const currentCategory = selectedCategory;
-      setSelectedCategory('');
+      setSelectedCategory("");
       setTimeout(() => {
         setSelectedCategory(currentCategory);
       }, 0);
@@ -113,7 +117,7 @@ export default function ProductsClient({
 
   return (
     <div>
-      <h1 className={styles.title}>Product Catalog</h1>
+      <h1 className={styles.title}>Products Catalog</h1>
       <SearchFilterBar
         categories={categories}
         onSearchChange={handleSearchChange}
@@ -127,9 +131,7 @@ export default function ProductsClient({
       )}
 
       {/* Show loading indicator for category updates */}
-      {isLoadingCategory && !error && (
-        <CategoryLoader />
-      )}
+      {isLoadingCategory && !error && <CategoryLoader />}
 
       {/* Show products list when not loading and no error */}
       {!isLoadingCategory && !error && (
@@ -152,7 +154,7 @@ export default function ProductsClient({
               <p className={styles.emptyText}>
                 {searchQuery
                   ? `No products found matching "${searchQuery}".`
-                  : 'No products found.'}
+                  : "No products found."}
               </p>
             </div>
           )}

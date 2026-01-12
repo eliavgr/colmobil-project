@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useCallback } from 'react';
-import styles from './SearchFilterBar.module.css';
+import { useState, useEffect, useCallback, memo } from "react";
+import styles from "./SearchFilterBar.module.css";
 
 interface SearchFilterBarProps {
   categories: string[];
@@ -16,14 +16,14 @@ interface SearchFilterBarProps {
  * - Category: triggers API fetch on change
  * - Search works on currently loaded products (filtered by category)
  */
-export default function SearchFilterBar({
+function SearchFilterBar({
   categories,
   onSearchChange,
   onCategoryChange,
   selectedCategory,
 }: SearchFilterBarProps) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
 
   // Debounce search input with 300ms delay
   useEffect(() => {
@@ -48,8 +48,8 @@ export default function SearchFilterBar({
   );
 
   const clearFilters = () => {
-    setSearchQuery('');
-    onCategoryChange('');
+    setSearchQuery("");
+    onCategoryChange("");
   };
 
   const hasActiveFilters = searchQuery || selectedCategory;
@@ -101,3 +101,5 @@ export default function SearchFilterBar({
     </div>
   );
 }
+
+export default memo(SearchFilterBar);

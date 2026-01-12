@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>HELLO WORLD</h1>
-      <p className={styles.subtitle}>Welcome to our product catalog</p>
+      <p className={styles.subtitle}>Welcome to our products catalog</p>
       <Link href="/products" className={styles.button}>
         Browse Products
       </Link>

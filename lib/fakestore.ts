@@ -1,8 +1,12 @@
-import { Product, ProductFilters } from './types';
+import { Product } from './types';
 
+// Using public API URL directly in code since FakeStore API is public and has no authentication
+// For a private/internal API, we would use environment variables:
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
+// And configure it in .env file (with .env.example as a template)
 const API_BASE_URL = 'https://fakestoreapi.com';
 
-/**
+/*
  * Error class for FakeStore API errors
  */
 export class FakeStoreAPIError extends Error {
@@ -180,41 +184,3 @@ export async function getProductsByCategory(category: string): Promise<Product[]
   }
 }
 
-/**
- * Filters products based on the provided filters
- * Client-side filtering utility function
- * @param products - Array of products to filter
- * @param filters - Filter criteria
- * @returns Filtered array of products
- */
-export function filterProducts(
-  products: Product[],
-  filters: ProductFilters
-): Product[] {
-  return products.filter((product) => {
-    // Search query filter
-    if (filters.searchQuery) {
-      const query = filters.searchQuery.toLowerCase();
-      const matchesSearch =
-        product.title.toLowerCase().includes(query) ||
-        product.description.toLowerCase().includes(query);
-      if (!matchesSearch) return false;
-    }
-
-    // Category filter
-    if (filters.category && product.category !== filters.category) {
-      return false;
-    }
-
-    // Price filters
-    if (filters.minPrice !== undefined && product.price < filters.minPrice) {
-      return false;
-    }
-
-    if (filters.maxPrice !== undefined && product.price > filters.maxPrice) {
-      return false;
-    }
-
-    return true;
-  });
-}
