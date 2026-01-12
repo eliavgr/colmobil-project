@@ -1,0 +1,13 @@
+.main {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md);
+  padding-top: calc(4rem + var(--spacing-xl)); /* Header height (4rem) + top padding */
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    padding-top: calc(4rem + var(--spacing-xl));
+  }
+}
